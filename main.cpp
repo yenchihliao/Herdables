@@ -1,11 +1,10 @@
 #include <SFML/Graphics.hpp>
+#include "unit/Unit.h"
 #include <iostream>
 
 int main(){
-	sf::RenderWindow window(sf::VideoMode(500, 500), "Tyranny");
-	sf::CircleShape dot(3);
-	dot.setFillColor(sf::Color::Blue);
-
+	sf::RenderWindow window(sf::VideoMode(1000, 1000), "Tyranny");
+	Unit u;
 	while(window.isOpen()){
 		sf::Event event;
 		sf::Vector2i pos = sf::Mouse::getPosition(window);
@@ -16,12 +15,12 @@ int main(){
 			if(event.type == sf::Event::MouseButtonPressed){
 				if(event.key.code == sf::Mouse::Right){
 					std::cout << "clicked" << std::endl;
-					dot.setPosition(pos.x, pos.y);
+					u.moveTo(pos);
 				}
 			}
 
 			window.clear();
-			window.draw(dot);
+			window.draw(*u.shape);
 			window.display();
 		}
 	}
