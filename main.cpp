@@ -4,10 +4,11 @@
 
 int main(){
 	sf::RenderWindow window(sf::VideoMode(1000, 1000), "Tyranny");
+	window.setFramerateLimit(15);
 	Unit u;
 	while(window.isOpen()){
 		sf::Event event;
-		sf::Vector2i pos = sf::Mouse::getPosition(window);
+		sf::Vector2f pos = sf::Vector2f(sf::Mouse::getPosition(window));
 		float dx = 0, dy = 0;
 		while(window.pollEvent(event)){
 			// Event window close
@@ -20,6 +21,7 @@ int main(){
 			}
 
 			window.clear();
+			u.update();
 			window.draw(*u.shape);
 			window.display();
 		}
