@@ -1,3 +1,4 @@
 all:
 		g++ -c unit/Unit.cpp
-		g++ main.cpp Unit.o -lsfml-graphics  -lsfml-window -lsfml-system
+		g++ -c player/Player.cpp
+		g++ main.cpp Unit.o Player.o -lsfml-graphics  -lsfml-window -lsfml-system

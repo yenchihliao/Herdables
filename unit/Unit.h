@@ -20,6 +20,7 @@ public:
 	void moveTo(sf::Vector2f);
 	void update();
 	void takeDamage(uint8_t);
+	bool isClicked(sf::Vector2i pos);
 private:
 	float distance(const sf::Vector2f&, const sf::Vector2f&);
 };

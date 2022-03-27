@@ -45,3 +45,11 @@ void Unit::takeDamage(uint8_t damage_){
 	}
 	return;
 }
+
+bool Unit::isClicked(sf::Vector2i pos){
+	std::cout << "clicked?" << pos.x << " " << pos.y << " " << this->shape->getPosition().x << " " << this->shape->getPosition().y << std::endl;
+	if(this->distance(sf::Vector2f(pos), this->shape->getPosition()) <= 9){
+		return true;
+	}
+	return false;
+}

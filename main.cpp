@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "unit/Unit.h"
+#include "player/Player.h"
 #include <iostream>
 
 void logTime(const char* s, sf::Clock &c){
@@ -16,7 +16,7 @@ void logTime(const char* s, sf::Clock &c){
 
 int main(){
 	sf::RenderWindow window(sf::VideoMode(1000, 1000), "Tyranny");
-	Unit u;
+	Player player(window);
 
 	// window.setFramerateLimit(15);
 	sf::Clock clock;
@@ -25,6 +25,7 @@ int main(){
 	sf::Clock time_counter;
 
 
+	std::cout << "hi again" << std::endl;
 	while(window.isOpen()){
 		float time = clock.getElapsedTime().asSeconds();
 		counter++;
@@ -39,20 +40,23 @@ int main(){
 			if(event.type == sf::Event::MouseButtonPressed){
 				if(event.key.code == sf::Mouse::Right){
 					std::cout << "clicked" << std::endl;
-					u.moveTo(sf::Vector2f(sf::Mouse::getPosition(window)));
+					player.rightClick(sf::Mouse::getPosition(window));
+				}else if(event.key.code == sf::Mouse::Left){
+					std::cout << "clicked" << std::endl;
+					player.leftClick(sf::Mouse::getPosition(window));
 				}
 			}
 		}
 
 		if(timer > delay){
-			logTime("b update", time_counter);
+			// logTime("b update", time_counter);
 			timer = 0;
-			u.update();
+			player.update();
 		}
-		logTime("b redraw", time_counter);
+		// logTime("b redraw", time_counter);
 		window.clear();
-		window.draw(*u.shape);
+		player.draw();
 		window.display();
-		logTime("a redraw", time_counter);
+		// logTime("a redraw", time_counter);
 	}
 }
