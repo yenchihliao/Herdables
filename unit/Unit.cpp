@@ -27,7 +27,7 @@ void Unit::update(){
 		// pos = &this->shape->getPosition()
 		// float len = this->distance(this->shape->getPosition(), this->targetPosition);
 		float len = std::sqrt(std::pow(pos.x, 2) + std::pow(pos.y, 2));
-		if(len <= 1){
+		if(len <= this->speed){
 			this->shape->setPosition(sf::Vector2f(this->targetPosition));
 			this->isWalking = false;
 		}else{
